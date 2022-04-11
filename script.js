@@ -124,7 +124,7 @@ function documentListeners() {
   });
 }
 function defaultElements() {
-  if (localStorage.getItem("nodes") !== undefined) {
+  if (localStorage.getItem("nodes") != undefined) {
     nodes = JSON.parse(localStorage.getItem("nodes"));
     let elements = [];
     for (const n in nodes) {
