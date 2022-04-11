@@ -1,0 +1,129 @@
+<html>
+  <head>
+    <title>cytoscape-edgehandles.js snapping demo</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <script src="./cytoscape.min.js"></script>
+    <script src="./lodash.js"></script>
+    <script src="./cytoscape-edgehandles.js"></script>
+
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+      body {
+        font-family: helvetica neue, helvetica, liberation sans, arial, sans-serif;
+        font-size: 14px;
+      }
+
+      #cy {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 999;
+      }
+
+      h1 {
+        opacity: 0.5;
+        font-size: 1em;
+        font-weight: bold;
+      }
+
+      #buttons {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 99999;
+        margin: 1em;
+        border: 1px black solid;
+        padding: 10px 15px;
+        border-radius: 2px;
+        background-color: rgba(255,255,255,.75);
+      }
+      #buttons>div>* {
+        margin: 5px 10px;
+        padding: 5px 10px;
+        width: 140px;
+        display:inline-block;
+      }
+      label,p,button {
+        display: inline-block;
+        font-weight: 600;
+      }
+      p{
+        padding:5px 0 !important;
+      }
+      label{
+        margin: 5px 10px;
+      }
+      input {
+        width: 40px;
+      }
+      button{
+        background-color: whitesmoke;
+        border-radius: 3px;
+        border-color: #ccc;
+        box-shadow: 0;
+      }
+      #table{
+        width:100%;
+      }
+      #table td, #table th{
+        border: 1px solid black;
+        border-radius: 3px;
+        padding: 3px 10px;
+        width: 40px;
+      }
+    </style>
+
+    <script src="./script.js">
+    </script>
+    <script src="./algorithm.js">
+    </script>
+    <script src="./updater.js">
+    </script>
+    <script src="./queue.js">
+    </script>
+  </head>
+
+  <body>
+
+    <div id="cy"></div>
+
+    <div id="buttons">
+      <div>
+        <button id="rearrange">rearrange</button>
+        <button id="add-node">+ node</button>
+      </div>
+      <div style="display: none;">
+       <p id="type"></p>
+      </div>
+      <div>
+        <button id="add-edge" style="display:none;">+ edge</button>
+        <button id="remove" style="display:none;">remove</button>
+        <div id="weight" style="display:none;">
+          <label for="weight">Weight</label>
+          <input type="number" name="weight" min="-3"/>
+        </div>
+      </div>
+      <div>
+        <p>Algorithm</p>
+      </div>
+      <div>
+        <select name="cars" id="algo">
+          <option value="bellman_ford">Bellman-Ford</option>
+          <option value="spfa">SPFA</option>
+          <option value="dijkstra">Dijkstra</option>
+          <option value="bipartiteness_check">Bipartiteness Check</option>
+        </select>
+        <button id="start">start</button>
+        <button id="stop" style="display:none;">stop</button>
+      </div>
+      <div id="result" style="padding:10px;"></div>
+      <table id="table"></table>
+    </div>
+
+  </body>
+
+</html>
